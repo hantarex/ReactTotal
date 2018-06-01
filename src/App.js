@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-import {createStore} from 'redux';
-import AllReducers from './Service/Reducers';
+import configureStore from './Service/Reducers/configureStore';
 import {Provider} from 'react-redux';
 import Totalizator from './Service/Components/Totalizator';
 
-const store = createStore(AllReducers);
+const store = configureStore();
+
+store.subscribe(() => {
+    console.log(store.getState())
+});
 
 console.log(store.getState());
 

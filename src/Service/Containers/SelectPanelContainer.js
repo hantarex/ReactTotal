@@ -12,6 +12,13 @@ class SelectPanelContainer extends Component {
     }
 
     showPanel() {
+        if(this.props.isLoading){
+            return (
+                <p>
+                    Loading...
+                </p>
+            )
+        }
         if(!this.props.activePanel){
             return (
                 <p/>
@@ -30,6 +37,7 @@ class SelectPanelContainer extends Component {
 function mapStateToProps(state) {
     return {
         activePanel: state.activePanel,
+        isLoading: state.itemsIsLoading,
         conditions: state.matchesConditions
     }
 }

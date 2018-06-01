@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
-import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {selectMatches} from '../Actions/SelectMacthes';
+import TestFetch from "../FetchData/TestFetch";
 
 class Matches extends Component {
     render() {
@@ -30,7 +29,9 @@ function mapStateToProps(state) {
 }
 
 function matchDispatchToProps(dispatch){
-    return bindActionCreators({selectMatches: selectMatches}, dispatch)
+    return {
+        selectMatches: (match) => dispatch(TestFetch(match))
+    }
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(Matches);
