@@ -1,0 +1,80 @@
+.matches{
+  width:40%;
+  display: inline-block;
+  vertical-align: top;
+  cursor: pointer;
+  > div {
+    margin: 3px 0;
+  }
+  .match{
+    background: #d1af73;
+    position: relative;
+    padding-right: 65px;
+    border-radius: 3px;
+    margin: 0 4px;
+    &.active{
+      margin: 0 0 0 4px;
+      border-radius: 3px 0 0 3px;
+      background: #dacfbf;
+    }
+  }
+  .commands, .flags, .data {
+    vertical-align: middle;
+    display: inline-block;
+  }
+  .data{
+    padding:10px 15px;
+    font-weight: bold;
+    position: relative;
+    &:after{
+      position: absolute;
+      top:3px;
+      right: 0;
+      bottom: 3px;
+      content: '';
+      width:1px;
+      background: #fff;
+    }
+  }
+  .flags{
+    img{
+      margin:0 10px
+    }
+    span{
+      vertical-align: middle;
+    }
+  }
+  .commands{
+    margin: 0 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+    .team{
+      line-height: 14px;
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+  .delimiter{
+    margin: 0 15px;
+  }
+  .check{
+    position: absolute;
+    right: 20px;
+    top:50%;
+    font-size: 30px;
+    line-height: 30px;
+    margin-top: -15px;
+  }
+}
+.work_panel{
+  width: 60%;
+  display: inline-block;
+  > div{
+    min-height: 400px;
+    padding: 10px;
+    background: #dacfbf;
+    position: relative;
+    margin: 0 2px 0 0;
+    border-radius: 3px;
+  }
+}
