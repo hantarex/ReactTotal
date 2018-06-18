@@ -4,7 +4,7 @@ import SelectPanel from './SelectPanel';
 
 const MatchList = () => {
     return (
-        <div>
+        <div className="matches">
             <Matches/>
         </div>
     );

@@ -1,45 +1,67 @@
-import React, {Component} from 'react';
-import {bindActionCreators} from 'redux';
+import React from 'react';
 import {connect} from 'react-redux';
+import ReactLoading from 'react-loading';
+import {css} from 'aphrodite';
+import StyleLoading from "../Styles/StyleLoading";
 
-class SelectPanelContainer extends Component {
-    render() {
-        return (
-            <div>
-                {this.showPanel()}
-            </div>
-        )
-    }
+const SelectPanelContainer = ({matchInfo, matchLoading}) => {
 
-    showPanel() {
-        if(this.props.isLoading){
+    const showPanel = () => {
+        if(matchLoading){
             return (
-                <p>
-                    Loading...
-                </p>
+                <div className="work_panel">
+                    <div>
+                        <ReactLoading className={css(StyleLoading.loading_match)} type="spin" color="#099fd1" height={50} width={50} />
+                    </div>
+                </div>
+            )
+        } else {
+            return (
+                <div className="work_panel">
+                    <div>
+                        <div className="header">
+                            <div className="data">
+                                {matchInfo.date}
+                            </div>
+                            <div className="game_type">
+                                {matchInfo.game_type}
+                            </div>
+                            <div className="commands">
+                                <div className="head">
+                                    <span className="team">
+                                        {matchInfo.team_1.name}
+                                    </span>
+                                        <span className="delimiter">
+                                        -
+                                    </span>
+                                        <span className="team">
+                                        {matchInfo.team_2.name}
+                                    </span>
+                                </div>
+                                <div className="foot">
+                                    <div className="time">
+                                        {matchInfo.time} {matchInfo.place}
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="flags">
+                                <img src="img/blank.gif" className={"flag " +  matchInfo.team_1.flag} alt={matchInfo.team_1.name} />
+                                <span className="glyphicon glyphicon glyphicon-remove" aria-hidden="true" />
+                                <img src="img/blank.gif" className={"flag " +  matchInfo.team_2.flag} alt={matchInfo.team_2.name} />
+                            </div>
+                        </div>
+                    </div>
+                </div>
             )
         }
-        if(!this.props.activePanel){
-            return (
-                <p/>
-            );
-        }
-        return (
-            <p>{this.getCondition(this.props.activePanel)}</p>
-        );
     }
 
-    getCondition(activePanel) {
-        return this.props.conditions[activePanel].conditions
-    }
+    return showPanel();
 }
 
-function mapStateToProps(state) {
-    return {
-        activePanel: state.activePanel,
-        isLoading: state.itemsIsLoading,
-        conditions: state.matchesConditions
-    }
-}
-
-export default connect(mapStateToProps)(SelectPanelContainer);
+export default connect(
+    state => ({
+        matchInfo: state.dataMatch,
+        matchLoading: state.matchLoading
+    })
+)(SelectPanelContainer);

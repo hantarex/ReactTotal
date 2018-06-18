@@ -13,7 +13,9 @@
     "redux-thunk": "^2.3.0",
     "react-router": "latest",
     "history": "latest",
-    "react-router-dom": "latest"
+    "react-router-dom": "latest",
+    "aphrodite": "latest",
+    "react-loading": "latest"
   },
   "scripts": {
     "start": "react-scripts start",

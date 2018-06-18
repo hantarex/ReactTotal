@@ -4,7 +4,11 @@ import {Provider} from 'react-redux';
 import Totalizator from './Service/Components/Totalizator';
 import {HashRouter, Route, Link, Switch} from 'react-router-dom';
 import {createHashHistory} from 'history';
-import Test from './Service/Components/Test';
+import Header from './Service/Components/Header';
+import ReactLoading from 'react-loading';
+import StyleLoading from "./Service/Styles/StyleLoading";
+import {css} from 'aphrodite';
+import Body from "./Service/Components/BodyComponent";
 
 const store = configureStore();
 
@@ -12,23 +16,29 @@ store.subscribe(() => {
     console.log(store.getState())
 });
 
-console.log(store.getState());
-
 class App extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            loading: true
+        }
+    }
+
+    componentDidMount(){
+        let el = document.getElementById("Loading")
+        this.setState({loading: false})
+    }
     render() {
+        let loadingClass=[css(StyleLoading.loading)]
+
+        if(!this.state.loading) {
+            loadingClass.push(css(StyleLoading.disable));
+        }
+
         return (
             <Provider store={store}>
                 <HashRouter history={createHashHistory}>
-                    <div>
-                        <ul>
-                            <li><Link to="/">Home</Link></li>
-                            <li><Link to="/test">Test</Link></li>
-                        </ul>
-                        <Switch>
-                            <Route exact path="/" component={Totalizator}/>
-                            <Route path="/test" component={Test}/>
-                        </Switch>
-                    </div>
+                    <Body />
                 </HashRouter>
             </Provider>
         );
