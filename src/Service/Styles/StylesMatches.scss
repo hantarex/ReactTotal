@@ -1,3 +1,16 @@
+@mixin padding_space(){
+  padding: 7px 15px;
+}
+@mixin input_number(){
+  text-align: right;
+  border-radius: 0;
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
 .matches{
   width:40%;
   display: inline-block;
@@ -12,18 +25,23 @@
     padding-right: 65px;
     border-radius: 3px;
     margin: 0 4px;
+    white-space: nowrap;
     &.active{
       margin: 0 0 0 4px;
       border-radius: 3px 0 0 3px;
       background: #dacfbf;
     }
   }
-  .commands, .flags, .data {
+  .command_block{
+    white-space: normal;
+    margin-right: 75px;
+  }
+  .commands, .flags, .data, .command_block {
     vertical-align: middle;
     display: inline-block;
   }
   .data{
-    padding:10px 15px;
+    @include padding_space;
     font-weight: bold;
     position: relative;
     &:after{
@@ -60,6 +78,7 @@
   .check{
     position: absolute;
     right: 20px;
+    border-radius: 0;
     top:50%;
     font-size: 30px;
     line-height: 30px;
@@ -71,10 +90,179 @@
   display: inline-block;
   > div{
     min-height: 400px;
-    padding: 10px;
+    padding: 15px;
     background: #dacfbf;
     position: relative;
     margin: 0 2px 0 0;
     border-radius: 3px;
+  }
+  .header{
+    > div {
+      display: inline-block;
+      vertical-align: top;
+      font-weight: bold;
+      &.data, &.game_type{
+        width: 10%;
+      }
+      &.commands, &.flags{
+        text-align: center;
+      }
+      &.commands{
+        width: 50%;
+        text-transform: uppercase;
+        font-weight: bold;
+        .team{
+          line-height: 14px;
+          display: inline-block;
+          vertical-align: middle;
+        }
+        .delimiter{
+          margin: 0 15px;
+        }
+        .foot{
+          font-size: 12px;
+          font-weight: normal;
+          text-transform: none;
+        }
+      }
+      &.flags{
+        white-space: nowrap;
+        img{
+          margin:0 10px
+        }
+        span{
+          vertical-align: middle;
+        }
+        width: 30%;
+      }
+    }
+  }
+}
+.active_bet, .beat_bet{
+  margin-top: 15px;
+  width: 100%;
+  > div {
+    vertical-align: top;
+    display: inline-block;
+    &+div{
+      margin-left:10px
+    }
+  }
+  .show_check_submit{
+    width:40%;
+    > span{
+      text-transform: uppercase;
+    }
+    .check{
+      background: #fff;
+      @include padding_space;
+      width: 100%;
+    }
+  }
+  .condition{
+    width: 30%;
+    > span{
+      text-transform: uppercase;
+    }
+    .type_1{
+      margin-top: 5px;
+      .bet{
+        background: #fff;
+        @include padding_space;
+        display: inline-block;
+        width: 100%;
+        &:before{
+          content: '\25CF';
+          display: inline-block;
+          margin-right: 20px;
+        }
+      }
+      .radio{
+        margin-top: 5px;
+      }
+    }
+  }
+  .condition_bet{
+    background: #fff;
+    @include padding_space;
+  }
+  .button_set{
+    margin-top: 10px;
+    display: block;
+    width: 70%;
+    text-align: right;
+    .button{
+      @include padding_space;
+      background: #d1af73;
+      width: 170px;
+      text-align: center;
+      display: inline-block;
+      color:#fff;
+      -webkit-box-shadow: inset 0 0 5px 1px rgba(0,0,0,0.64);
+      -moz-box-shadow: inset 0 0 5px 1px rgba(0,0,0,0.64);
+      box-shadow: inset 0 0 5px 1px rgba(0,0,0,0.64);
+      border-radius: 3px;
+    }
+  }
+}
+.beat_bet{
+  .condition_bet{
+    border-radius: 0;
+  }
+  .condition{
+    .type_1, .type_3 {
+      margin-top: 0;
+      .radio{
+        background: #fff;
+        @include padding_space;
+        display: inline-block;
+        margin: 0;
+        margin-top: 5px;
+        width: 100%;
+        label{
+          display: block;
+          font-weight: bold;
+        }
+      }
+    }
+    .type_2{
+      margin-top: 5px;
+      >span, > div {
+        display: inline-block;
+      }
+      .form-group{
+        margin-left: 5px;
+        width: 70px;
+        input {
+          @include input_number();
+        }
+      }
+    }
+    .type_3{
+      .command{
+        margin-top: 5px;
+        clear: both;
+        >div {
+          display: inline-block;
+          &.radio{
+            margin: 0;
+            width:70%
+          }
+          &.form-group{
+            width:70px;
+            float:right;
+            margin: 0;
+            input{
+              @include input_number();
+            }
+          }
+        }
+      }
+    }
+  }
+  .show_check_submit{
+    select {
+      border-radius: 0;
+    }
   }
 }

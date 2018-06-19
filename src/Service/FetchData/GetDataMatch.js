@@ -8,6 +8,10 @@ export default function() {
         game_type: "1/8",
         time: "19:00",
         place: "Лужники",
+        checks: [
+            1234,
+            55666
+        ],
         team_1:{
             team_id: 4,
             name: "Россия",
@@ -19,15 +23,53 @@ export default function() {
             flag: "flag-br"
         },
         bets: {
-            active:{
-                bets_id: 1,
-                check: 1234,
-                value: {
-                    team_id:4,
-                    name: "Россия",
-                    flag: "flag-ru"
+            active:[
+                {
+                    bets_id: 1,
+                    bets_type: 1,
+                    check: 1234,
+                    value: {
+                        team_id:4,
+                        name: "Россия",
+                        flag: "flag-ru"
+                    }
                 }
-            }
+            ],
+            bets:[
+                {
+                    bets_type: 1,
+                    value: {
+                        team_1:{
+                            team_id: 4,
+                            name: "Россия",
+                            flag: "flag-ru"
+                        },
+                        team_2:{
+                            team_id: 5,
+                            name: "Бразилия",
+                            flag: "flag-br"
+                        }
+                    }
+                },
+                {
+                    bets_type: 2,
+                },
+                {
+                    bets_type: 3,
+                    value: {
+                        team_1:{
+                            team_id: 4,
+                            name: "Россия",
+                            flag: "flag-ru"
+                        },
+                        team_2:{
+                            team_id: 5,
+                            name: "Бразилия",
+                            flag: "flag-br"
+                        }
+                    }
+                }
+            ]
         }
     }
     // We return a function instead of an action object

@@ -6,6 +6,8 @@ import {MainLoading} from "./MainLoading";
 import {Data} from "./Data";
 import {DataMatch} from "./DataMatch";
 import {MatchLoading} from "./MatchLoading";
+import {SelectedCondition} from "./SelectedCondition";
+import {Bet} from "./Bet";
 
 const allReducers = combineReducers({
     mainLoading: MainLoading,
@@ -13,7 +15,9 @@ const allReducers = combineReducers({
     activePanel: activePanel,
     itemsIsLoading: itemsIsLoading,
     data: Data,
-    dataMatch: DataMatch
+    dataMatch: DataMatch,
+    selectedCondition: SelectedCondition,
+    bet: Bet
 });
 
 export default allReducers;

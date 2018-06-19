@@ -10,16 +10,20 @@
     position: relative;
     padding-right: 65px;
     border-radius: 3px;
-    margin: 0 4px; }
+    margin: 0 4px;
+    white-space: nowrap; }
     .matches .match.active {
       margin: 0 0 0 4px;
       border-radius: 3px 0 0 3px;
       background: #dacfbf; }
-  .matches .commands, .matches .flags, .matches .data {
+  .matches .command_block {
+    white-space: normal;
+    margin-right: 75px; }
+  .matches .commands, .matches .flags, .matches .data, .matches .command_block {
     vertical-align: middle;
     display: inline-block; }
   .matches .data {
-    padding: 10px 15px;
+    padding: 7px 15px;
     font-weight: bold;
     position: relative; }
     .matches .data:after {
@@ -47,6 +51,7 @@
   .matches .check {
     position: absolute;
     right: 20px;
+    border-radius: 0;
     top: 50%;
     font-size: 30px;
     line-height: 30px;
@@ -57,10 +62,140 @@
   display: inline-block; }
   .work_panel > div {
     min-height: 400px;
-    padding: 10px;
+    padding: 15px;
     background: #dacfbf;
     position: relative;
     margin: 0 2px 0 0;
     border-radius: 3px; }
+  .work_panel .header > div {
+    display: inline-block;
+    vertical-align: top;
+    font-weight: bold; }
+    .work_panel .header > div.data, .work_panel .header > div.game_type {
+      width: 10%; }
+    .work_panel .header > div.commands, .work_panel .header > div.flags {
+      text-align: center; }
+    .work_panel .header > div.commands {
+      width: 50%;
+      text-transform: uppercase;
+      font-weight: bold; }
+      .work_panel .header > div.commands .team {
+        line-height: 14px;
+        display: inline-block;
+        vertical-align: middle; }
+      .work_panel .header > div.commands .delimiter {
+        margin: 0 15px; }
+      .work_panel .header > div.commands .foot {
+        font-size: 12px;
+        font-weight: normal;
+        text-transform: none; }
+    .work_panel .header > div.flags {
+      white-space: nowrap;
+      width: 30%; }
+      .work_panel .header > div.flags img {
+        margin: 0 10px; }
+      .work_panel .header > div.flags span {
+        vertical-align: middle; }
+
+.active_bet, .beat_bet {
+  margin-top: 15px;
+  width: 100%; }
+  .active_bet > div, .beat_bet > div {
+    vertical-align: top;
+    display: inline-block; }
+    .active_bet > div + div, .beat_bet > div + div {
+      margin-left: 10px; }
+  .active_bet .show_check_submit, .beat_bet .show_check_submit {
+    width: 40%; }
+    .active_bet .show_check_submit > span, .beat_bet .show_check_submit > span {
+      text-transform: uppercase; }
+    .active_bet .show_check_submit .check, .beat_bet .show_check_submit .check {
+      background: #fff;
+      padding: 7px 15px;
+      width: 100%; }
+  .active_bet .condition, .beat_bet .condition {
+    width: 30%; }
+    .active_bet .condition > span, .beat_bet .condition > span {
+      text-transform: uppercase; }
+    .active_bet .condition .type_1, .beat_bet .condition .type_1 {
+      margin-top: 5px; }
+      .active_bet .condition .type_1 .bet, .beat_bet .condition .type_1 .bet {
+        background: #fff;
+        padding: 7px 15px;
+        display: inline-block;
+        width: 100%; }
+        .active_bet .condition .type_1 .bet:before, .beat_bet .condition .type_1 .bet:before {
+          content: '\25CF';
+          display: inline-block;
+          margin-right: 20px; }
+      .active_bet .condition .type_1 .radio, .beat_bet .condition .type_1 .radio {
+        margin-top: 5px; }
+  .active_bet .condition_bet, .beat_bet .condition_bet {
+    background: #fff;
+    padding: 7px 15px; }
+  .active_bet .button_set, .beat_bet .button_set {
+    margin-top: 10px;
+    display: block;
+    width: 70%;
+    text-align: right; }
+    .active_bet .button_set .button, .beat_bet .button_set .button {
+      padding: 7px 15px;
+      background: #d1af73;
+      width: 170px;
+      text-align: center;
+      display: inline-block;
+      color: #fff;
+      -webkit-box-shadow: inset 0 0 5px 1px rgba(0, 0, 0, 0.64);
+      -moz-box-shadow: inset 0 0 5px 1px rgba(0, 0, 0, 0.64);
+      box-shadow: inset 0 0 5px 1px rgba(0, 0, 0, 0.64);
+      border-radius: 3px; }
+
+.beat_bet .condition_bet {
+  border-radius: 0; }
+.beat_bet .condition .type_1, .beat_bet .condition .type_3 {
+  margin-top: 0; }
+  .beat_bet .condition .type_1 .radio, .beat_bet .condition .type_3 .radio {
+    background: #fff;
+    padding: 7px 15px;
+    display: inline-block;
+    margin: 0;
+    margin-top: 5px;
+    width: 100%; }
+    .beat_bet .condition .type_1 .radio label, .beat_bet .condition .type_3 .radio label {
+      display: block;
+      font-weight: bold; }
+.beat_bet .condition .type_2 {
+  margin-top: 5px; }
+  .beat_bet .condition .type_2 > span, .beat_bet .condition .type_2 > div {
+    display: inline-block; }
+  .beat_bet .condition .type_2 .form-group {
+    margin-left: 5px;
+    width: 70px; }
+    .beat_bet .condition .type_2 .form-group input {
+      text-align: right;
+      border-radius: 0; }
+      .beat_bet .condition .type_2 .form-group input::-webkit-outer-spin-button, .beat_bet .condition .type_2 .form-group input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0; }
+.beat_bet .condition .type_3 .command {
+  margin-top: 5px;
+  clear: both; }
+  .beat_bet .condition .type_3 .command > div {
+    display: inline-block; }
+    .beat_bet .condition .type_3 .command > div.radio {
+      margin: 0;
+      width: 70%; }
+    .beat_bet .condition .type_3 .command > div.form-group {
+      width: 70px;
+      float: right;
+      margin: 0; }
+      .beat_bet .condition .type_3 .command > div.form-group input {
+        text-align: right;
+        border-radius: 0; }
+        .beat_bet .condition .type_3 .command > div.form-group input::-webkit-outer-spin-button, .beat_bet .condition .type_3 .command > div.form-group input::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          margin: 0; }
+.beat_bet .show_check_submit select {
+  border-radius: 0; }
 
 /*# sourceMappingURL=StylesMatches.css.map */
