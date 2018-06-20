@@ -4,6 +4,7 @@ import MatchList from './MatchList';
 import {HashRouter, Route, Switch} from "react-router-dom";
 import InfoComponent from "./InfoComponent";
 import {createHashHistory} from "history";
+import BetHistoryComponent from "./BetHistoryComponent";
 
 const Totalizator = () => {
     return (
@@ -15,6 +16,7 @@ const Totalizator = () => {
                 <Switch>
                     <Route exact path="/" component={SelectPanel}/>
                     <Route exact path="/info" component={InfoComponent}/>
+                    <Route exact path="/history" component={BetHistoryComponent}/>
                 </Switch>
             </div>
         </HashRouter>
