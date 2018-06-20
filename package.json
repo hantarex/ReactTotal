@@ -3,19 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "aphrodite": "latest",
     "create-react-class": "^15.6.3",
+    "history": "latest",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
+    "react-loading": "latest",
     "react-redux": "latest",
     "react-route": "^1.0.3",
+    "react-router": "latest",
+    "react-router-dom": "latest",
     "react-scripts": "1.1.4",
     "redux": "latest",
-    "redux-thunk": "^2.3.0",
-    "react-router": "latest",
-    "history": "latest",
-    "react-router-dom": "latest",
-    "aphrodite": "latest",
-    "react-loading": "latest"
+    "redux-devtools-extension": "^2.13.2",
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",

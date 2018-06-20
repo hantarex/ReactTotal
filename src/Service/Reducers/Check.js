@@ -1,8 +1,7 @@
-export function MatchLoading(state = false, action) {
+export function Check(state=null, action) {
     switch (action.type) {
-        case 'MATCH_LOADING':
+        case 'SET_CHECK':
             return action.payload;
-
         default:
             return state;
     }

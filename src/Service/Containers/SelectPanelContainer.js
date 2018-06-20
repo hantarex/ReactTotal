@@ -5,54 +5,87 @@ import {css} from 'aphrodite';
 import StyleLoading from "../Styles/StyleLoading";
 import {changeCondition} from "../Actions/changeCondition";
 import {SetBet} from "../Actions/SetBet";
+import {SetCheck} from "../Actions/SetCheck";
 
-const SelectPanelContainer = ({matchInfo, matchLoading, changeCondition, selectedCondition, setBet, bet}) => {
+const SelectPanelContainer = ({matchInfo, matchLoading, changeCondition, selectedCondition, setBet, bet, setCheck, use_check, infoPanel}) => {
 
     const setBetValue = (selectedCondition, data, event) =>{
+        let obj = {};
+        let newBet;
         switch (selectedCondition){
+            case "1":
+                setBet({
+                    ...bet,
+                    ...{
+                        1: data
+                    }
+                });
+                break;
+            case "2":
+                setBet({
+                    ...bet,
+                    ...{
+                        2: event.target.value
+                    }
+                });
+                break;
             case "3":
                 let obj = {};
                 obj[data] = event.target.value;
-                let newBet = {...bet[selectedCondition], ...obj};
+                newBet = {...bet[selectedCondition], ...obj};
                 setBet({
-                    3: newBet
+                    ...bet,
+                    ...{
+                        3: newBet
+                    }
                 });
+                break;
         }
     };
 
     const showConditionBet = () => {
         if (selectedCondition === null) return '';
+        let val_1, val_2;
         switch (selectedCondition) {
             case "1":
+                val_1=(
+                    typeof bet[selectedCondition] !== 'undefined' ?  bet[selectedCondition] === matchInfo.team_1.team_id : ''
+                );
+                val_2=(
+                    typeof bet[selectedCondition] !== 'undefined' ?  bet[selectedCondition] === matchInfo.team_2.team_id : ''
+                );
                 return (
                     <div className="type_1">
                         <div className="radio">
-                            <label><input type="radio" name="type_1"/>
+                            <label><input type="radio" name="type_1" value={true} onChange={(event) => {setBetValue(selectedCondition, matchInfo.team_1.team_id, event)}} checked={val_1}/>
                                 {matchInfo.team_1.name}
                             </label>
                         </div>
                         <div className="radio">
-                            <label><input type="radio" name="type_1"/>
+                            <label><input type="radio" name="type_1" value={true} onChange={(event) => {setBetValue(selectedCondition, matchInfo.team_2.team_id, event)}}  checked={val_2}/>
                                 {matchInfo.team_2.name}
                             </label>
                         </div>
                     </div>
                 );
             case "2":
+                val_1=(
+                    typeof bet[selectedCondition] !== 'undefined' ?  bet[selectedCondition] : ''
+                );
                 return (
                     <div className="type_2">
                         <span>Количество:</span>
                         <div className="form-group">
-                            <input type="number" className="form-control"/>
+                            <input type="number" className="form-control" value={val_1} onChange={(event) => {setBetValue(selectedCondition, null, event)}}/>
                         </div>
                     </div>
                 );
             case "3":
-                let val_1=(
+                val_1=(
                     typeof bet[selectedCondition] !== 'undefined'
                     && typeof bet[selectedCondition][matchInfo.team_1.team_id] !== 'undefined' ?  bet[selectedCondition][matchInfo.team_1.team_id] : ''
                 );
-                let val_2=(
+                val_2=(
                     typeof bet[selectedCondition] !== 'undefined'
                     && typeof bet[selectedCondition][matchInfo.team_2.team_id] !== 'undefined' ?  bet[selectedCondition][matchInfo.team_2.team_id] : ''
                 );
@@ -150,14 +183,20 @@ const SelectPanelContainer = ({matchInfo, matchLoading, changeCondition, selecte
         )
     };
 
+    const changeCheck = (val) => {
+        setCheck(val);
+    };
+
     const showCheckSubmit = () => {
         return (
             <div className="show_check_submit">
                 <span>Выбрать чек</span>
-                <select className="check form-control">
+                <select className="check form-control" onChange={(event) => {
+                    changeCheck(event.target.value)
+                }}>
                     {matchInfo.checks.map((check, index) => {
                         return (
-                            <option key={index}>
+                            <option key={index} value={check} selected={check === use_check}>
                                 Чек {check}
                             </option>
                         )
@@ -185,6 +224,22 @@ const SelectPanelContainer = ({matchInfo, matchLoading, changeCondition, selecte
 
     const showSubmit = () => {
         switch (selectedCondition){
+            case "1":
+            case "2":
+                if(typeof bet[selectedCondition] !== 'undefined') {
+                    if(!isNaN(parseFloat(bet[selectedCondition])) && isFinite(bet[selectedCondition])) {
+                        return (
+                            <div className="button_set">
+                                <button type="button" className="btn btn-primary">
+                                    Сделать ставку!
+                                </button>
+                            </div>
+                        )
+                    } else {
+                        return '';
+                    }
+                }
+                break;
             case "3":
                 if(typeof bet[selectedCondition] === 'object') {
                     let countNumber = 0;
@@ -205,6 +260,7 @@ const SelectPanelContainer = ({matchInfo, matchLoading, changeCondition, selecte
                         return '';
                     }
                 }
+
         }
     };
 
@@ -223,6 +279,15 @@ const SelectPanelContainer = ({matchInfo, matchLoading, changeCondition, selecte
     };
 
     const showPanel = () => {
+        if(matchInfo === null && !matchLoading){
+            return (
+                <div className="work_panel">
+                    <div>
+                        {infoPanel}
+                    </div>
+                </div>
+            )
+        }
         if (matchLoading) {
             return (
                 <div className="work_panel">
@@ -286,6 +351,8 @@ export default connect(
         matchLoading: state.matchLoading,
         selectedCondition: state.selectedCondition,
         bet: state.bet,
+        use_check: state.setCheck,
+        infoPanel: state.data.info,
     }),
     dispatch => ({
         changeCondition: (type) => {
@@ -293,6 +360,9 @@ export default connect(
         },
         setBet: (data) => {
             dispatch(SetBet(data))
+        },
+        setCheck: (data) => {
+            dispatch(SetCheck(data))
         }
     })
 )

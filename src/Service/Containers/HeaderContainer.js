@@ -7,9 +7,9 @@ class HeaderContainer extends Component {
         return (
             <div>
                 <ul>
-                    <li><Link to="/bet">Игра. Количество ставок: {this.props.data.attempts}</Link></li>
+                    <li><Link to="/">Игра. Количество ставок: {this.props.data.attempts}</Link></li>
                     <li><Link to="/history">История ставок</Link></li>
-                    <li><Link to="/">Информация</Link></li>
+                    <li><Link to="/info">Информация</Link></li>
                 </ul>
             </div>
         )

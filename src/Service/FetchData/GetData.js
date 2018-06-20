@@ -18,7 +18,98 @@ export default function() {
                     name: "Бразилия",
                     flag: "flag-br"
                 }
-            }
+            },
+            {
+                id: 2,
+                date: "31.06",
+                time: "21:00",
+                team_1:{
+                    name: "Португалия",
+                    flag: "flag-pt"
+                },
+                team_2:{
+                    name: "Швеция",
+                    flag: "flag-se"
+                }
+            },
+            {
+                id: 2,
+                date: "31.06",
+                time: "21:00",
+                team_1:{
+                    name: "Португалия",
+                    flag: "flag-pt"
+                },
+                team_2:{
+                    name: "Швеция",
+                    flag: "flag-se"
+                }
+            },
+            {
+                id: 2,
+                date: "31.06",
+                time: "21:00",
+                team_1:{
+                    name: "Португалия",
+                    flag: "flag-pt"
+                },
+                team_2:{
+                    name: "Швеция",
+                    flag: "flag-se"
+                }
+            },
+            {
+                id: 2,
+                date: "31.06",
+                time: "21:00",
+                team_1:{
+                    name: "Португалия",
+                    flag: "flag-pt"
+                },
+                team_2:{
+                    name: "Швеция",
+                    flag: "flag-se"
+                }
+            },
+            {
+                id: 2,
+                date: "31.06",
+                time: "21:00",
+                team_1:{
+                    name: "Португалия",
+                    flag: "flag-pt"
+                },
+                team_2:{
+                    name: "Швеция",
+                    flag: "flag-se"
+                }
+            },
+            {
+                id: 2,
+                date: "31.06",
+                time: "21:00",
+                team_1:{
+                    name: "Португалия",
+                    flag: "flag-pt"
+                },
+                team_2:{
+                    name: "Швеция",
+                    flag: "flag-se"
+                }
+            },
+            {
+                id: 2,
+                date: "31.06",
+                time: "21:00",
+                team_1:{
+                    name: "Португалия",
+                    flag: "flag-pt"
+                },
+                team_2:{
+                    name: "Швеция",
+                    flag: "flag-se"
+                }
+            },
         ]
     }
     // We return a function instead of an action object

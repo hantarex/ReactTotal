@@ -3,8 +3,10 @@ import {connect} from "react-redux";
 
 const InfoContainer = ({info}) => {
     return (
-        <div>
-            {info}
+        <div className="info">
+            <div>
+                {info}
+            </div>
         </div>
     )
 };

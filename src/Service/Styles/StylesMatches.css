@@ -1,21 +1,34 @@
 .matches {
   width: 40%;
+  max-height: 500px;
+  direction: rtl;
+  overflow-y: auto;
   display: inline-block;
   vertical-align: top;
   cursor: pointer; }
   .matches > div {
     margin: 3px 0; }
   .matches .match {
+    direction: ltr;
     background: #d1af73;
     position: relative;
     padding-right: 65px;
-    border-radius: 3px;
     margin: 0 4px;
     white-space: nowrap; }
     .matches .match.active {
       margin: 0 0 0 4px;
-      border-radius: 3px 0 0 3px;
-      background: #dacfbf; }
+      background: #dacfbf;
+      border-top-right-radius: 0 !important;
+      border-bottom-right-radius: 0 !important; }
+      .matches .match.active .check {
+        right: 24px; }
+    .matches .match:first-child {
+      border-radius: 3px 3px 0 0; }
+    .matches .match + .match {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0; }
+    .matches .match:last-child {
+      border-radius: 0 0 3px 3px; }
   .matches .command_block {
     white-space: normal;
     margin-right: 75px; }
@@ -57,44 +70,46 @@
     line-height: 30px;
     margin-top: -15px; }
 
-.work_panel {
+.work_panel, .info {
   width: 60%;
-  display: inline-block; }
-  .work_panel > div {
-    min-height: 400px;
+  display: inline-block;
+  max-height: 500px;
+  overflow-y: auto; }
+  .work_panel > div, .info > div {
     padding: 15px;
+    min-height: 500px;
     background: #dacfbf;
     position: relative;
-    margin: 0 2px 0 0;
+    margin: 0 4px 0 0;
     border-radius: 3px; }
-  .work_panel .header > div {
+  .work_panel .header > div, .info .header > div {
     display: inline-block;
     vertical-align: top;
     font-weight: bold; }
-    .work_panel .header > div.data, .work_panel .header > div.game_type {
+    .work_panel .header > div.data, .work_panel .header > div.game_type, .info .header > div.data, .info .header > div.game_type {
       width: 10%; }
-    .work_panel .header > div.commands, .work_panel .header > div.flags {
+    .work_panel .header > div.commands, .work_panel .header > div.flags, .info .header > div.commands, .info .header > div.flags {
       text-align: center; }
-    .work_panel .header > div.commands {
+    .work_panel .header > div.commands, .info .header > div.commands {
       width: 50%;
       text-transform: uppercase;
       font-weight: bold; }
-      .work_panel .header > div.commands .team {
+      .work_panel .header > div.commands .team, .info .header > div.commands .team {
         line-height: 14px;
         display: inline-block;
         vertical-align: middle; }
-      .work_panel .header > div.commands .delimiter {
+      .work_panel .header > div.commands .delimiter, .info .header > div.commands .delimiter {
         margin: 0 15px; }
-      .work_panel .header > div.commands .foot {
+      .work_panel .header > div.commands .foot, .info .header > div.commands .foot {
         font-size: 12px;
         font-weight: normal;
         text-transform: none; }
-    .work_panel .header > div.flags {
+    .work_panel .header > div.flags, .info .header > div.flags {
       white-space: nowrap;
       width: 30%; }
-      .work_panel .header > div.flags img {
+      .work_panel .header > div.flags img, .info .header > div.flags img {
         margin: 0 10px; }
-      .work_panel .header > div.flags span {
+      .work_panel .header > div.flags span, .info .header > div.flags span {
         vertical-align: middle; }
 
 .active_bet, .beat_bet {
@@ -160,6 +175,7 @@
     display: inline-block;
     margin: 0;
     margin-top: 5px;
+    min-height: 34px;
     width: 100%; }
     .beat_bet .condition .type_1 .radio label, .beat_bet .condition .type_3 .radio label {
       display: block;
@@ -197,5 +213,10 @@
           margin: 0; }
 .beat_bet .show_check_submit select {
   border-radius: 0; }
+
+.info {
+  width: 100%; }
+  .info > div {
+    margin: 0 4px; }
 
 /*# sourceMappingURL=StylesMatches.css.map */

@@ -9,10 +9,12 @@ const Totalizator = () => {
     return (
         <HashRouter history={createHashHistory}>
             <div>
-                <MatchList/>
                 <Switch>
-                    <Route exact path="/" component={InfoComponent}/>
-                    <Route exact path="/bet" component={SelectPanel}/>
+                    <Route exact path="/" component={MatchList} />
+                </Switch>
+                <Switch>
+                    <Route exact path="/" component={SelectPanel}/>
+                    <Route exact path="/info" component={InfoComponent}/>
                 </Switch>
             </div>
         </HashRouter>

@@ -12,10 +12,6 @@ import Body from "./Service/Components/BodyComponent";
 
 const store = configureStore();
 
-store.subscribe(() => {
-    console.log(store.getState())
-});
-
 class App extends Component {
     constructor(props) {
         super(props);

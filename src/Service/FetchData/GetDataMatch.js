@@ -1,5 +1,6 @@
 import {setDataMatch} from "../Actions/setDataMatch";
 import {MatchLoadingActions} from "../Actions/MatchLoadingAction";
+import {SetCheck} from "../Actions/SetCheck";
 
 export default function() {
     let data = {
@@ -71,13 +72,22 @@ export default function() {
                 }
             ]
         }
-    }
+    };
+
+    const setDefaultCheck = (data) => {
+        let check = null;
+        if(data.checks.length > 0){
+            check = data.checks[0];
+        }
+        return SetCheck(check);
+    };
     // We return a function instead of an action object
     return (dispatch) => {
         dispatch(MatchLoadingActions(true));
         setTimeout(() => {
             // This function is able to dispatch other action creators
             dispatch(setDataMatch(data));
+            dispatch(setDefaultCheck(data));
             dispatch(MatchLoadingActions(false))
         }, 500);
     };
