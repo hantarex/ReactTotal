@@ -86,7 +86,7 @@ const BetHistoryContainer = ({history, getHistory}) => {
                 </div>
             </div>
         )
-    } else if(typeof history.bets !== 'undefined' && history.bets.length === 0) {
+    } else if(typeof history.bets === 'undefined' || typeof history.bets !== 'undefined' && history.bets.length === 0) {
         return (
             <div className="info">
                 <div>
