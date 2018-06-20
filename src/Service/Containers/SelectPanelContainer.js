@@ -6,13 +6,15 @@ import StyleLoading from "../Styles/StyleLoading";
 import {changeCondition} from "../Actions/changeCondition";
 import {SetBet} from "../Actions/SetBet";
 import {SetCheck} from "../Actions/SetCheck";
+import {setSubmitBet} from "../Actions/setSubmitBet";
+import SendBet from "../FetchData/SendBet";
 
-const SelectPanelContainer = ({matchInfo, matchLoading, changeCondition, selectedCondition, setBet, bet, setCheck, use_check, infoPanel}) => {
+const SelectPanelContainer = ({matchInfo, matchLoading, changeCondition, selectedCondition, setBet, bet, setCheck, use_check, infoPanel, submitBetAction, onSubmitBet}) => {
 
     const setBetValue = (selectedCondition, data, event) =>{
         let obj = {};
         let newBet;
-        switch (selectedCondition){
+        switch (selectedCondition.toString()){
             case "1":
                 setBet({
                     ...bet,
@@ -46,7 +48,7 @@ const SelectPanelContainer = ({matchInfo, matchLoading, changeCondition, selecte
     const showConditionBet = () => {
         if (selectedCondition === null) return '';
         let val_1, val_2;
-        switch (selectedCondition) {
+        switch (selectedCondition.toString()) {
             case "1":
                 val_1=(
                     typeof bet[selectedCondition] !== 'undefined' ?  bet[selectedCondition] === matchInfo.team_1.team_id : ''
@@ -127,7 +129,7 @@ const SelectPanelContainer = ({matchInfo, matchLoading, changeCondition, selecte
                 }}>
                     {matchInfo.bets.bets.map((bet) => {
                         return (
-                            <option key={bet.bets_type} value={bet.bets_type}>
+                            <option key={bet.bets_type} value={bet.bets_type} selected={selectedCondition.toString() === bet.bets_type.toString() }>
                                 {showHumanBetType(bet.bets_type)}
                             </option>
                         )
@@ -222,15 +224,19 @@ const SelectPanelContainer = ({matchInfo, matchLoading, changeCondition, selecte
         })
     };
 
+    const submitBet = () => {
+        submitBetAction({matchInfo, bet});
+    };
+
     const showSubmit = () => {
-        switch (selectedCondition){
+        switch (selectedCondition.toString()){
             case "1":
             case "2":
                 if(typeof bet[selectedCondition] !== 'undefined') {
                     if(!isNaN(parseFloat(bet[selectedCondition])) && isFinite(bet[selectedCondition])) {
                         return (
                             <div className="button_set">
-                                <button type="button" className="btn btn-primary">
+                                <button type="button" className={"btn btn-primary" + (onSubmitBet?" loading": "")} onClick={submitBet} disabled={onSubmitBet}>
                                     Сделать ставку!
                                 </button>
                             </div>
@@ -251,7 +257,7 @@ const SelectPanelContainer = ({matchInfo, matchLoading, changeCondition, selecte
                     if(countNumber === 2) {
                         return (
                             <div className="button_set">
-                                <button type="button" className="btn btn-primary">
+                                <button type="button" className={"btn btn-primary" + (onSubmitBet?" loading": "")} onClick={submitBet} disabled={onSubmitBet}>
                                     Сделать ставку!
                                 </button>
                             </div>
@@ -338,7 +344,7 @@ const SelectPanelContainer = ({matchInfo, matchLoading, changeCondition, selecte
                 </div>
             )
         }
-    }
+    };
 
     return showPanel();
 }
@@ -351,6 +357,7 @@ export default connect(
         bet: state.bet,
         use_check: state.setCheck,
         infoPanel: state.data.info,
+        onSubmitBet: state.onSubmitBet,
     }),
     dispatch => ({
         changeCondition: (type) => {
@@ -361,6 +368,9 @@ export default connect(
         },
         setCheck: (data) => {
             dispatch(SetCheck(data))
+        },
+        submitBetAction: (data) => {
+            dispatch(SendBet(data))
         }
     })
 )

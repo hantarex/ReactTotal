@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "aphrodite": "latest",
+    "axios": "^0.18.0",
     "create-react-class": "^15.6.3",
     "history": "latest",
     "react": "^16.4.0",
