@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 import GetHistory from "../FetchData/GetHistory";
 import {setHistory} from "../Actions/setHistory";
+import HashRouter from "react-router-dom/es/HashRouter";
+import createHashHistory from "history/es/createHashHistory";
 
 class HeaderContainer extends Component {
     checkHistory(){
@@ -10,13 +12,15 @@ class HeaderContainer extends Component {
     }
     render() {
         return (
-            <div>
-                <ul>
-                    <li><Link to="/">Игра. Количество ставок: {this.props.data.attempts}</Link></li>
-                    <li><Link to="/history" onClick={this.checkHistory.bind(this)}>История ставок</Link></li>
-                    <li><Link to="/info">Информация</Link></li>
-                </ul>
-            </div>
+            <HashRouter history={createHashHistory}>
+                <div className="header">
+                    <ul>
+                        <li><NavLink exact to="/" activeClassName="active">ИГРА. Количество ставок: <b>{this.props.data.attempts}</b></NavLink></li>
+                        <li><NavLink exact to="/history" activeClassName="active" onClick={this.checkHistory.bind(this)}>История ставок</NavLink></li>
+                        <li><NavLink exact to="/info" activeClassName="active">Информация</NavLink></li>
+                    </ul>
+                </div>
+            </HashRouter>
         )
     }
 }
