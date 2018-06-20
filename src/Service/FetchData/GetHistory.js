@@ -8,15 +8,16 @@ export default function() {
                 id: 1,
                 date: "30.06",
                 time: "19:00",
-                team_1:{
-                    team_id: 4,
-                    name: "Россия",
-                    flag: "flag-ru"
-                },
-                team_2:{
-                    team_id: 5,
-                    name: "Бразилия",
-                    flag: "flag-br"
+                check: "1231",
+                teams:{
+                    4:{
+                        name: "Россия",
+                        flag: "flag-ru"
+                    },
+                    5:{
+                        name: "Бразилия",
+                        flag: "flag-br"
+                    },
                 },
                 bet: {
                     bets_type: 3,
@@ -24,45 +25,50 @@ export default function() {
                         4: 12,
                         5: 1,
                     }
-                }
+                },
+                result: "В ожидании матча"
             },
             {
                 id: 2,
                 date: "30.06",
                 time: "19:00",
-                team_1:{
-                    team_id: 4,
-                    name: "Россия",
-                    flag: "flag-ru"
-                },
-                team_2:{
-                    team_id: 5,
-                    name: "Бразилия",
-                    flag: "flag-br"
+                check: "1231",
+                teams:{
+                    4:{
+                        name: "Россия",
+                        flag: "flag-ru"
+                    },
+                    5:{
+                        name: "Бразилия",
+                        flag: "flag-br"
+                    },
                 },
                 bet: {
                     bets_type: 2,
-                    value: 4
-                }
+                    value: 45
+                },
+                result: "Нет"
             },
             {
                 id: 1,
                 date: "30.06",
                 time: "19:00",
-                team_1:{
-                    team_id: 4,
-                    name: "Россия",
-                    flag: "flag-ru"
-                },
-                team_2:{
-                    team_id: 5,
-                    name: "Бразилия",
-                    flag: "flag-br"
+                check: "1231",
+                teams:{
+                    4:{
+                        name: "Россия",
+                        flag: "flag-ru"
+                    },
+                    5:{
+                        name: "Бразилия",
+                        flag: "flag-br"
+                    },
                 },
                 bet: {
                     bets_type: 1,
                     value: 4
-                }
+                },
+                result: "Да"
             },
         ]
     };

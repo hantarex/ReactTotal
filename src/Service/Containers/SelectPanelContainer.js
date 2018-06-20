@@ -282,9 +282,7 @@ const SelectPanelContainer = ({matchInfo, matchLoading, changeCondition, selecte
         if(matchInfo === null && !matchLoading){
             return (
                 <div className="work_panel">
-                    <div>
-                        {infoPanel}
-                    </div>
+                    <div  dangerouslySetInnerHTML={{__html:infoPanel}} />
                 </div>
             )
         }

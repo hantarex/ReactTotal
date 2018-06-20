@@ -218,5 +218,7 @@
   width: 100%; }
   .info > div {
     margin: 0 4px; }
+  .info .thead-light {
+    background: #d1af73; }
 
 /*# sourceMappingURL=StylesMatches.css.map */

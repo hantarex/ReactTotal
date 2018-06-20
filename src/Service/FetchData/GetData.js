@@ -4,7 +4,7 @@ import {MainLoadingActions} from "../Actions/MainLoadingAction";
 export default function() {
     let data = {
         attempts: 9,
-        info: 'test',
+        info: 'test <b>1231</b>',
         matches: [
             {
                 id: 1,
