@@ -141,12 +141,12 @@ const SelectPanelContainer = ({matchInfo, matchLoading, changeCondition, selecte
     };
 
     const showHumanBetType = (bet) => {
-        switch (bet) {
-            case 1:
+        switch (bet.toString()) {
+            case "1":
                 return "Кто победит?";
-            case 2:
+            case "2":
                 return "Разница мячей";
-            case 3:
+            case "3":
                 return "Победитель и счёт";
             default:
                 return "Ошибка";
@@ -196,10 +196,10 @@ const SelectPanelContainer = ({matchInfo, matchLoading, changeCondition, selecte
                 <select className="check form-control" onChange={(event) => {
                     changeCheck(event.target.value)
                 }}>
-                    {matchInfo.checks.map((check, index) => {
+                    {Object.keys(matchInfo.checks).map((key, index) => {
                         return (
-                            <option key={index} value={check} selected={check === use_check}>
-                                Чек {check}
+                            <option key={index} value={key} selected={key === use_check}>
+                                Чек {matchInfo.checks[key]}
                             </option>
                         )
                     })}
@@ -209,6 +209,7 @@ const SelectPanelContainer = ({matchInfo, matchLoading, changeCondition, selecte
     };
 
     const showActiveBet = () => {
+        if(!matchInfo.bets.active) return '';
         return matchInfo.bets.active.map((bet) => {
             return (
                 <div key={bet.bets_id} className="active_bet">
@@ -225,7 +226,7 @@ const SelectPanelContainer = ({matchInfo, matchLoading, changeCondition, selecte
     };
 
     const submitBet = () => {
-        submitBetAction({matchInfo, bet});
+        submitBetAction({matchInfo, bet, use_check});
     };
 
     const showSubmit = () => {
@@ -271,7 +272,7 @@ const SelectPanelContainer = ({matchInfo, matchLoading, changeCondition, selecte
     };
 
     const showBet = () => {
-        if (matchInfo.checks.length > 0) {
+        if (Object.keys(matchInfo.checks).length > 0) {
             return (
                 <div className="beat_bet">
                     {showBetType()}
@@ -347,7 +348,7 @@ const SelectPanelContainer = ({matchInfo, matchLoading, changeCondition, selecte
     };
 
     return showPanel();
-}
+};
 
 export default connect(
     state => ({

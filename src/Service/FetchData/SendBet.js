@@ -6,12 +6,18 @@ import {setDataMatch} from "../Actions/setDataMatch";
 import GetDataMatch from "./GetDataMatch";
 import {changeCondition} from "../Actions/changeCondition";
 import {SetCheck} from "../Actions/SetCheck";
+import qs from 'querystring';
 
 export default function (data) {
     return (dispatch) => {
         dispatch(setSubmitBet(true));
-
-        axios.post("http://localhost:3000", data).then(res => {
+        axios.post("http://workgit_56/personal/index.php?op=totalizator&use=set_bet", data,
+            {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            }
+            ).then(res => {
             dispatch(setSubmitBet(false));
         }).catch(error => {
             dispatch(setSubmitBet(false));

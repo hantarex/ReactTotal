@@ -29,7 +29,7 @@ class Matches extends Component {
         let main = this;
         return this.props.footballMatches.map((match) => {
             return (
-                <div key={match.id} className={"match" + (this.state.activeMatch === match.id ? " active": "" )} onClick={() => {main.clickMatch(match)}}>
+                <div key={match.id} className={"match" + (this.state.activeMatch === match.id ? " active": "" )} onClick={() => {main.clickMatch(match.id)}}>
                     <div>
                         <div className="data">
                             <div className="day">
