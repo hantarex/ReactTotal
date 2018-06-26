@@ -132,18 +132,18 @@
     width: 30%; }
     .active_bet .condition > span, .beat_bet .condition > span {
       text-transform: uppercase; }
-    .active_bet .condition .type_1, .beat_bet .condition .type_1 {
+    .active_bet .condition .type_1, .active_bet .condition .type_2, .active_bet .condition .type_3, .beat_bet .condition .type_1, .beat_bet .condition .type_2, .beat_bet .condition .type_3 {
       margin-top: 5px; }
-      .active_bet .condition .type_1 .bet, .beat_bet .condition .type_1 .bet {
+      .active_bet .condition .type_1 .bet, .active_bet .condition .type_2 .bet, .active_bet .condition .type_3 .bet, .beat_bet .condition .type_1 .bet, .beat_bet .condition .type_2 .bet, .beat_bet .condition .type_3 .bet {
         background: #fff;
         padding: 7px 15px;
         display: inline-block;
         width: 100%; }
-        .active_bet .condition .type_1 .bet:before, .beat_bet .condition .type_1 .bet:before {
+        .active_bet .condition .type_1 .bet:before, .active_bet .condition .type_2 .bet:before, .active_bet .condition .type_3 .bet:before, .beat_bet .condition .type_1 .bet:before, .beat_bet .condition .type_2 .bet:before, .beat_bet .condition .type_3 .bet:before {
           content: '\25CF';
           display: inline-block;
           margin-right: 20px; }
-      .active_bet .condition .type_1 .radio, .beat_bet .condition .type_1 .radio {
+      .active_bet .condition .type_1 .radio, .active_bet .condition .type_2 .radio, .active_bet .condition .type_3 .radio, .beat_bet .condition .type_1 .radio, .beat_bet .condition .type_2 .radio, .beat_bet .condition .type_3 .radio {
         margin-top: 5px; }
   .active_bet .condition_bet, .beat_bet .condition_bet {
     background: #fff;
@@ -165,11 +165,20 @@
       box-shadow: inset 0 0 5px 1px rgba(0, 0, 0, 0.64);
       border-radius: 3px; }
 
-.beat_bet .condition_bet {
+.active_bet .condition .type_2 > span, .active_bet .condition .type_3 > span {
+  display: inline-block; }
+.active_bet .condition .type_2 .bet, .active_bet .condition .type_3 .bet {
+  width: 70px;
+  text-align: right;
+  margin-left: 5px; }
+  .active_bet .condition .type_2 .bet:before, .active_bet .condition .type_3 .bet:before {
+    display: none; }
+
+.beat_bet .condition_bet, .active_bet .condition_bet {
   border-radius: 0; }
-.beat_bet .condition .type_1, .beat_bet .condition .type_3 {
+.beat_bet .condition .type_1, .beat_bet .condition .type_3, .active_bet .condition .type_1, .active_bet .condition .type_3 {
   margin-top: 0; }
-  .beat_bet .condition .type_1 .radio, .beat_bet .condition .type_3 .radio {
+  .beat_bet .condition .type_1 .radio, .beat_bet .condition .type_3 .radio, .active_bet .condition .type_1 .radio, .active_bet .condition .type_3 .radio {
     background: #fff;
     padding: 7px 15px;
     display: inline-block;
@@ -177,41 +186,41 @@
     margin-top: 5px;
     min-height: 34px;
     width: 100%; }
-    .beat_bet .condition .type_1 .radio label, .beat_bet .condition .type_3 .radio label {
+    .beat_bet .condition .type_1 .radio label, .beat_bet .condition .type_3 .radio label, .active_bet .condition .type_1 .radio label, .active_bet .condition .type_3 .radio label {
       display: block;
       font-weight: bold; }
-.beat_bet .condition .type_2 {
+.beat_bet .condition .type_2, .active_bet .condition .type_2 {
   margin-top: 5px; }
-  .beat_bet .condition .type_2 > span, .beat_bet .condition .type_2 > div {
+  .beat_bet .condition .type_2 > span, .beat_bet .condition .type_2 > div, .active_bet .condition .type_2 > span, .active_bet .condition .type_2 > div {
     display: inline-block; }
-  .beat_bet .condition .type_2 .form-group {
+  .beat_bet .condition .type_2 .form-group, .active_bet .condition .type_2 .form-group {
     margin-left: 5px;
     width: 70px; }
-    .beat_bet .condition .type_2 .form-group input {
+    .beat_bet .condition .type_2 .form-group input, .active_bet .condition .type_2 .form-group input {
       text-align: right;
       border-radius: 0; }
-      .beat_bet .condition .type_2 .form-group input::-webkit-outer-spin-button, .beat_bet .condition .type_2 .form-group input::-webkit-inner-spin-button {
+      .beat_bet .condition .type_2 .form-group input::-webkit-outer-spin-button, .beat_bet .condition .type_2 .form-group input::-webkit-inner-spin-button, .active_bet .condition .type_2 .form-group input::-webkit-outer-spin-button, .active_bet .condition .type_2 .form-group input::-webkit-inner-spin-button {
         -webkit-appearance: none;
         margin: 0; }
-.beat_bet .condition .type_3 .command {
+.beat_bet .condition .type_3 .command, .active_bet .condition .type_3 .command {
   margin-top: 5px;
   clear: both; }
-  .beat_bet .condition .type_3 .command > div {
+  .beat_bet .condition .type_3 .command > div, .active_bet .condition .type_3 .command > div {
     display: inline-block; }
-    .beat_bet .condition .type_3 .command > div.radio {
+    .beat_bet .condition .type_3 .command > div.radio, .active_bet .condition .type_3 .command > div.radio {
       margin: 0;
       width: 70%; }
-    .beat_bet .condition .type_3 .command > div.form-group {
+    .beat_bet .condition .type_3 .command > div.form-group, .active_bet .condition .type_3 .command > div.form-group {
       width: 70px;
       float: right;
       margin: 0; }
-      .beat_bet .condition .type_3 .command > div.form-group input {
+      .beat_bet .condition .type_3 .command > div.form-group input, .active_bet .condition .type_3 .command > div.form-group input {
         text-align: right;
         border-radius: 0; }
-        .beat_bet .condition .type_3 .command > div.form-group input::-webkit-outer-spin-button, .beat_bet .condition .type_3 .command > div.form-group input::-webkit-inner-spin-button {
+        .beat_bet .condition .type_3 .command > div.form-group input::-webkit-outer-spin-button, .beat_bet .condition .type_3 .command > div.form-group input::-webkit-inner-spin-button, .active_bet .condition .type_3 .command > div.form-group input::-webkit-outer-spin-button, .active_bet .condition .type_3 .command > div.form-group input::-webkit-inner-spin-button {
           -webkit-appearance: none;
           margin: 0; }
-.beat_bet .show_check_submit select {
+.beat_bet .show_check_submit select, .active_bet .show_check_submit select {
   border-radius: 0; }
 
 .info {
@@ -242,5 +251,10 @@
           border: 1px solid #a4805d; }
       .header ul li + li {
         margin-left: 10px; }
+
+.active_bet .condition .type_1 {
+  margin-top: 5px; }
+.active_bet .condition .type_3 .bet {
+  float: right; }
 
 /*# sourceMappingURL=StylesMatches.css.map */

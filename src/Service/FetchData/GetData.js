@@ -115,6 +115,7 @@ export default function() {
     //     ]
     // };
     return (dispatch) => {
+        axios.defaults.withCredentials = true;
         axios.post("http://workgit_56/personal/index.php?op=totalizator&use=match_list").then(res => {
             dispatch(setData(res.data));
             dispatch(MainLoadingActions(false));

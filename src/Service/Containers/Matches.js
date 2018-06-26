@@ -21,7 +21,7 @@ class Matches extends Component {
     }
 
     clickMatch(match, event) {
-        this.setState({activeMatch: match.id});
+        this.setState({activeMatch: match});
         this.props.selectMatches(match)
     }
 

@@ -3,6 +3,7 @@ import qs from 'querystring';
 import {setDataMatch} from "../Actions/setDataMatch";
 import {MatchLoadingActions} from "../Actions/MatchLoadingAction";
 import {SetCheck} from "../Actions/SetCheck";
+import {SetAttempts} from "../Actions/SetAttempts";
 
 export default function(data) {
     let data_tmp = {
@@ -108,6 +109,7 @@ export default function(data) {
 
     return (dispatch) => {
         dispatch(MatchLoadingActions(true));
+        axios.defaults.withCredentials = true;
         axios.post("http://workgit_56/personal/index.php?op=totalizator&use=match_info", post,
             {
                 headers: {
@@ -116,6 +118,7 @@ export default function(data) {
             }
             ).then(res => {
             dispatch(setDataMatch(res.data));
+            dispatch(SetAttempts(Object.keys(res.data.checks).length));
             dispatch(setDefaultCheck(res.data));
             dispatch(MatchLoadingActions(false));
         })

@@ -185,7 +185,7 @@ $heightBody: 500px;
     > span{
       text-transform: uppercase;
     }
-    .type_1{
+    .type_1, .type_2, .type_3{
       margin-top: 5px;
       .bet{
         background: #fff;
@@ -226,7 +226,24 @@ $heightBody: 500px;
     }
   }
 }
-.beat_bet{
+.active_bet{
+  .condition{
+    .type_2, .type_3{
+      >span{
+        display: inline-block;
+      }
+      .bet{
+        width: 70px;
+        text-align: right;
+        margin-left: 5px;
+        &:before{
+          display: none;
+        }
+      }
+    }
+  }
+}
+.beat_bet, .active_bet{
   .condition_bet{
     border-radius: 0;
   }
@@ -321,6 +338,18 @@ $heightBody: 500px;
       }
       &+li{
         margin-left: 10px;
+      }
+    }
+  }
+}
+.active_bet{
+  .condition{
+    .type_1 {
+      margin-top: 5px;
+    }
+    .type_3{
+      .bet{
+        float:right;
       }
     }
   }

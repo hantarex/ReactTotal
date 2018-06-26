@@ -154,8 +154,8 @@ const SelectPanelContainer = ({matchInfo, matchLoading, changeCondition, selecte
     };
 
     const showHumanBetTypeActive = (bet) => {
-        switch (bet.bets_type) {
-            case 1:
+        switch (bet.bets_type.toString()) {
+            case "1":
                 return (
                     <div className="condition">
                         <span>На что ставим?</span>
@@ -165,6 +165,48 @@ const SelectPanelContainer = ({matchInfo, matchLoading, changeCondition, selecte
                         <div className="type_1">
                             <div className="bet">
                                 {bet.value.name}
+                            </div>
+                        </div>
+                    </div>
+                );
+            case "3":
+                return (
+                    <div className="condition">
+                        <span>На что ставим?</span>
+                        <div className="condition_bet">
+                            {showHumanBetType(bet.bets_type)}
+                        </div>
+                        <div className="type_3">
+                            <div className="command">
+                                <div className="radio">
+                                    <span>{bet.value.team_1.name}</span>
+                                </div>
+                                <div className="bet">
+                                    {bet.value.team_1.value}
+                                </div>
+                            </div>
+                            <div className="command">
+                                <div className="radio">
+                                    <span>{bet.value.team_2.name}</span>
+                                </div>
+                                <div className="bet">
+                                    {bet.value.team_2.value}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                );
+            case "2":
+                return (
+                    <div className="condition">
+                        <span>На что ставим?</span>
+                        <div className="condition_bet">
+                            {showHumanBetType(bet.bets_type)}
+                        </div>
+                        <div className="type_2">
+                            <span>Количество:</span>
+                            <div className="bet">
+                                {bet.value}
                             </div>
                         </div>
                     </div>
@@ -226,7 +268,7 @@ const SelectPanelContainer = ({matchInfo, matchLoading, changeCondition, selecte
     };
 
     const submitBet = () => {
-        submitBetAction({matchInfo, bet, use_check});
+        submitBetAction({matchInfo, bet, use_check, selectedCondition});
     };
 
     const showSubmit = () => {
