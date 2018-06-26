@@ -57,7 +57,7 @@ const BetHistoryContainer = ({history, getHistory}) => {
             case "2":
             case "3":
                 return (
-                    <tr>
+                    <tr key={bet.id}>
                         <th>
                             {bet.check}
                         </th>
@@ -70,7 +70,7 @@ const BetHistoryContainer = ({history, getHistory}) => {
             default:
                 return (
                     <div>
-                        ok
+                        Ошибка
                     </div>
                 );
         }

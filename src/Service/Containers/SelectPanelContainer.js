@@ -235,7 +235,7 @@ const SelectPanelContainer = ({matchInfo, matchLoading, changeCondition, selecte
         return (
             <div className="show_check_submit">
                 <span>Выбрать чек</span>
-                <select className="check form-control" onChange={(event) => {
+                <select className="check form-control" style={{background: "#fff997"}} onChange={(event) => {
                     changeCheck(event.target.value)
                 }}>
                     {Object.keys(matchInfo.checks).map((key, index) => {

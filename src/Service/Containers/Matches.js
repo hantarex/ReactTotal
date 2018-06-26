@@ -25,9 +25,19 @@ class Matches extends Component {
         this.props.selectMatches(match)
     }
 
+    showWasBet(match) {
+        if(match.active.toString() === "1"){
+            return (
+                <div className="check">
+                    <span className="glyphicon glyphicon glyphicon-ok-circle" aria-hidden="true" />
+                </div>
+            );
+        }
+    }
+
     showMatches() {
         let main = this;
-        return this.props.footballMatches.map((match) => {
+        return this.props.footballMatches.matches.map((match) => {
             return (
                 <div key={match.id} className={"match" + (this.state.activeMatch === match.id ? " active": "" )} onClick={() => {main.clickMatch(match.id)}}>
                     <div>
@@ -57,9 +67,7 @@ class Matches extends Component {
                                 </span>
                             </div>
                         </div>
-                        <div className="check">
-                            <span className="glyphicon glyphicon glyphicon-ok-circle" aria-hidden="true" />
-                        </div>
+                        {main.showWasBet(match)}
                     </div>
                 </div>
             )
@@ -69,7 +77,7 @@ class Matches extends Component {
 
 function mapStateToProps(state) {
     return {
-        footballMatches: state.data.matches
+        footballMatches: state.data
     }
 }
 

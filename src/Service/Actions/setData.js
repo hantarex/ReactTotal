@@ -1,6 +1,6 @@
-export const setData = (data) => {
+export const setData = (data, type = "SET") => {
     return {
-        type: "SET",
+        type: type,
         payload: data
     }
 };

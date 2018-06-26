@@ -1,5 +1,6 @@
 import {setHistory} from "../Actions/setHistory";
 import {HistoryLoadingActions} from "../Actions/HistoryLoadingAction";
+import axios from 'axios';
 
 export default function() {
     let data = {
@@ -73,11 +74,18 @@ export default function() {
         ]
     };
     // We return a function instead of an action object
+    // return (dispatch) => {
+    //     setTimeout(() => {
+    //         // This function is able to dispatch other action creators
+    //         dispatch(setHistory(data));
+    //         dispatch(HistoryLoadingActions(false))
+    //     }, 500);
+    // };
     return (dispatch) => {
-        setTimeout(() => {
-            // This function is able to dispatch other action creators
-            dispatch(setHistory(data));
+        axios.defaults.withCredentials = true;
+        axios.post("http://workgit_56/personal/index.php?op=totalizator&use=get_history").then(res => {
+            dispatch(setHistory(res.data));
             dispatch(HistoryLoadingActions(false))
-        }, 500);
+        })
     };
 }
