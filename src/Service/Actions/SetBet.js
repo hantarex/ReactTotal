@@ -1,6 +1,6 @@
-export const SetBet = (data) => {
+export const SetBet = (data, type = "SET_BET") => {
     return {
-        type: "SET_BET",
+        type: type,
         payload: data
     }
 };

@@ -4,6 +4,7 @@ import {setDataMatch} from "../Actions/setDataMatch";
 import {MatchLoadingActions} from "../Actions/MatchLoadingAction";
 import {SetCheck} from "../Actions/SetCheck";
 import {SetAttempts} from "../Actions/SetAttempts";
+import {SetBet} from "../Actions/SetBet";
 
 export default function(data) {
     // let data_tmp = {
@@ -119,6 +120,7 @@ export default function(data) {
             ).then(res => {
             dispatch(setDataMatch(res.data));
             dispatch(SetAttempts(Object.keys(res.data.checks).length));
+            dispatch(SetBet(null, "CLEAR_BET"));
             dispatch(setDefaultCheck(res.data));
             dispatch(MatchLoadingActions(false));
         })
