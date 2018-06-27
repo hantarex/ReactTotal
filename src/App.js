@@ -1,11 +1,6 @@
 import React, {Component} from 'react';
 import configureStore from './Service/Reducers/configureStore';
 import {Provider} from 'react-redux';
-import Totalizator from './Service/Components/Totalizator';
-import {HashRouter, Route, Link, Switch} from 'react-router-dom';
-import {createHashHistory} from 'history';
-import Header from './Service/Components/Header';
-import ReactLoading from 'react-loading';
 import StyleLoading from "./Service/Styles/StyleLoading";
 import {css} from 'aphrodite';
 import Body from "./Service/Components/BodyComponent";
@@ -33,9 +28,7 @@ class App extends Component {
 
         return (
             <Provider store={store}>
-                <HashRouter history={createHashHistory}>
                     <Body />
-                </HashRouter>
             </Provider>
         );
     }

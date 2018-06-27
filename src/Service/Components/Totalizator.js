@@ -5,22 +5,38 @@ import {HashRouter, Route, Switch} from "react-router-dom";
 import InfoComponent from "./InfoComponent";
 import {createHashHistory} from "history";
 import BetHistoryComponent from "./BetHistoryComponent";
+import {connect} from "react-redux";
 
-const Totalizator = () => {
-    return (
-        <HashRouter history={createHashHistory}>
-            <div>
-                <Switch>
-                    <Route exact path="/" component={MatchList} />
-                </Switch>
-                <Switch>
-                    <Route exact path="/" component={SelectPanel}/>
-                    <Route exact path="/info" component={InfoComponent}/>
-                    <Route exact path="/history" component={BetHistoryComponent}/>
-                </Switch>
-            </div>
-        </HashRouter>
-    );
+const Totalizator = ({page}) => {
+    const showPage = () => {
+        switch (page){
+            case "history":
+                return (
+                    <div>
+                        <BetHistoryComponent/>
+                    </div>
+                );
+            case "info":
+                return (
+                    <div>
+                        <InfoComponent/>
+                    </div>
+                );
+            default:
+                return (
+                  <div>
+                      <MatchList/>
+                      <SelectPanel/>
+                  </div>
+                );
+        }
+    };
+    return showPage();
 };
 
-export default Totalizator;
+
+export default connect(
+    state => ({
+        page: state.page,
+    })
+)(Totalizator)

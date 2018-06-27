@@ -8,7 +8,8 @@ const initialState = {
     errorBlock: () => {return {
         active: 0,
         text: "default"
-    }}
+    }},
+    page: ""
 };
 
 export default function configureStore(initialState) {
