@@ -50,7 +50,16 @@ const BetHistoryContainer = ({history, getHistory}) => {
                 {result}
             </td>
         );
-    }
+    };
+
+    const showRewards = (bet) => {
+        return (
+            <td>
+                {bet.rewards}
+            </td>
+        );
+    };
+
     const showBet = (bet) => {
         switch (bet.bet.bets_type.toString()){
             case "1":
@@ -63,6 +72,7 @@ const BetHistoryContainer = ({history, getHistory}) => {
                         </th>
                         {showGame(bet.teams)}
                         {showBetCol(bet)}
+                        {showRewards(bet)}
                         {showResult(bet.result)}
                     </tr>
                 );
@@ -109,6 +119,9 @@ const BetHistoryContainer = ({history, getHistory}) => {
                         </th>
                         <th scope="col">
                             Ставка
+                        </th>
+                        <th scope="col">
+                            В случае выигрыша
                         </th>
                         <th scope="col">
                             Мой выигрыш

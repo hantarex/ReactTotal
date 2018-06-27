@@ -127,10 +127,10 @@ const SelectPanelContainer = ({matchInfo, matchLoading, changeCondition, selecte
                 <select className="condition_bet form-control" onChange={(event) => {
                     changeCondition(event.target.value)
                 }}>
-                    {matchInfo.bets.bets.map((bet) => {
+                    {Object.keys(matchInfo.bets.bets).map((key, index) => {
                         return (
-                            <option key={bet.bets_type} value={bet.bets_type} selected={selectedCondition.toString() === bet.bets_type.toString() }>
-                                {showHumanBetType(bet.bets_type)}
+                            <option key={matchInfo.bets.bets[key].bets_type} value={matchInfo.bets.bets[key].bets_type} selected={selectedCondition.toString() === matchInfo.bets.bets[key].bets_type.toString() }>
+                                {showHumanBetType(matchInfo.bets.bets[key].bets_type)}
                             </option>
                         )
                     })}
@@ -223,6 +223,9 @@ const SelectPanelContainer = ({matchInfo, matchLoading, changeCondition, selecte
                 <div className="check">
                     {bet.check}
                 </div>
+                <div className="info">
+                    В случае победы {bet.rewards}
+                </div>
             </div>
         )
     };
@@ -246,6 +249,9 @@ const SelectPanelContainer = ({matchInfo, matchLoading, changeCondition, selecte
                         )
                     })}
                 </select>
+                <div className="info">
+                    В случае победы {matchInfo.bets.bets[selectedCondition].rewards}
+                </div>
             </div>
         )
     };

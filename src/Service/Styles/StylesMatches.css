@@ -176,6 +176,9 @@
 
 .beat_bet .condition_bet, .active_bet .condition_bet {
   border-radius: 0; }
+.beat_bet .info, .active_bet .info {
+  font-weight: normal;
+  margin-top: 5px; }
 .beat_bet .condition .type_1, .beat_bet .condition .type_3, .active_bet .condition .type_1, .active_bet .condition .type_3 {
   margin-top: 0; }
   .beat_bet .condition .type_1 .radio, .beat_bet .condition .type_3 .radio, .active_bet .condition .type_1 .radio, .active_bet .condition .type_3 .radio {
