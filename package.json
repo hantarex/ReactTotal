@@ -15,7 +15,9 @@
     "react-route": "^1.0.3",
     "react-router": "latest",
     "react-router-dom": "latest",
+    "react-router-redux": "^4.0.8",
     "react-scripts": "1.1.4",
+    "reactstrap": "^6.1.0",
     "redux": "latest",
     "redux-devtools-extension": "^2.13.2",
     "redux-thunk": "^2.3.0"

@@ -11,9 +11,11 @@ import {History} from "./History";
 import {HistoryLoading} from "./HistoryLoading";
 import {OnSubmitBet} from "./OnSubmitBet";
 import {ErrorBlock} from "./ErrorBlock";
+import {routerReducer} from 'react-router-redux';
 
 const allReducers = combineReducers({
     mainLoading: MainLoading,
+    router: routerReducer,
     matchLoading: MatchLoading,
     historyLoading: HistoryLoading,
     activePanel: activePanel,
