@@ -380,10 +380,10 @@ const SelectPanelContainer = ({matchInfo, matchLoading, changeCondition, selecte
                                 </div>
                             </div>
                             <div className="flags">
-                                <img src="img/blank.gif" className={"flag " + matchInfo.team_1.flag}
+                                <img src="/css/flags/blank.gif" className={"flag " + matchInfo.team_1.flag}
                                      alt={matchInfo.team_1.name}/>
                                 <span className="glyphicon glyphicon glyphicon-remove" aria-hidden="true"/>
-                                <img src="img/blank.gif" className={"flag " + matchInfo.team_2.flag}
+                                <img src="/css/flags/blank.gif" className={"flag " + matchInfo.team_2.flag}
                                      alt={matchInfo.team_2.name}/>
                             </div>
                             {showActiveBet()}

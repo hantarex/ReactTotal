@@ -10,6 +10,7 @@ import {Check} from "./Check";
 import {History} from "./History";
 import {HistoryLoading} from "./HistoryLoading";
 import {OnSubmitBet} from "./OnSubmitBet";
+import {ErrorBlock} from "./ErrorBlock";
 
 const allReducers = combineReducers({
     mainLoading: MainLoading,
@@ -22,6 +23,7 @@ const allReducers = combineReducers({
     selectedCondition: SelectedCondition,
     bet: Bet,
     setCheck: Check,
+    errorBlock: ErrorBlock,
     history: History,
     onSubmitBet: OnSubmitBet
 });

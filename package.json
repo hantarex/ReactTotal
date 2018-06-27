@@ -2,7 +2,7 @@
   "name": "total",
   "version": "0.1.0",
   "private": true,
-  "homepage" : "http://workgit_56/totalizator",
+  "homepage": "http://workgit_56/totalizator",
   "dependencies": {
     "aphrodite": "latest",
     "axios": "^0.18.0",
@@ -22,8 +22,15 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && npm run build-rename",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build-rename": "npm run build-rename-js && npm run build-rename-css",
+    "build-rename-js": "renamer --regex --find \"main\\.[^\\.]+\\.js\" --replace sd_total.js \"build/static/js/*.js\"",
+    "build-rename-css": "renamer --regex --find \"main\\.[^\\.]+\\.css\" --replace sd_total.css \"build/static/css/*.css\"",
+    "build-rename-map": "renamer -v --regex --find \"main\\.[^\\.]+\\.map\" --replace sd_total.map \"build/static/**/*.map\""
+  },
+  "devDependencies": {
+    "renamer": "^0.7.3"
   }
 }

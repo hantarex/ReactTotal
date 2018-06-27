@@ -4,8 +4,12 @@ import rootReducer from './';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 const initialState = {
-    attempts: () => {return 9}
-}
+    attempts: () => {return 9},
+    errorBlock: () => {return {
+        active: 0,
+        text: "default"
+    }}
+};
 
 export default function configureStore(initialState) {
     return createStore(

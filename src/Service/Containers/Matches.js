@@ -5,7 +5,7 @@ import '../Styles/StylesMatches.css'
 import GetDataMatch from "../FetchData/GetDataMatch";
 
 class Matches extends Component {
-    constructor(){
+    constructor() {
         super();
         this.state = {
             activeMatch: null
@@ -26,10 +26,10 @@ class Matches extends Component {
     }
 
     showWasBet(match) {
-        if(match.active.toString() === "1"){
+        if (match.active.toString() === "1") {
             return (
                 <div className="check">
-                    <span className="glyphicon glyphicon glyphicon-ok-circle" aria-hidden="true" />
+                    <span className="glyphicon glyphicon glyphicon-ok-circle" aria-hidden="true"/>
                 </div>
             );
         }
@@ -39,32 +39,38 @@ class Matches extends Component {
         let main = this;
         return this.props.footballMatches.matches.map((match) => {
             return (
-                <div key={match.id} className={"match" + (this.state.activeMatch === match.id ? " active": "" )} onClick={() => {main.clickMatch(match.id)}}>
+                <div key={match.id} className={"match" + (this.state.activeMatch === match.id ? " active" : "" )}
+                     onClick={() => {
+                         main.clickMatch(match.id)
+                     }}>
                     <div>
                         <div className="data">
                             <div className="day">
                                 {match.date}
                             </div>
-                            <div  className="hour">
+                            <div className="hour">
                                 {match.time}
                             </div>
                         </div>
                         <div className="command_block">
-                            <div className="flags">
-                            <img src="img/blank.gif" className={"flag " +  match.team_1.flag} alt={match.team_1.name} />
-                                <span className="glyphicon glyphicon glyphicon-remove" aria-hidden="true" />
-                            <img src="img/blank.gif" className={"flag " +  match.team_2.flag} alt={match.team_2.name} />
-                            </div>
                             <div className="commands">
-                                <span className="team">
-                                    {match.team_1.name}
-                                </span>
-                                <span className="delimiter">
-                                    -
-                                </span>
-                                <span className="team">
-                                    {match.team_2.name}
-                                </span>
+                                <div className="command">
+                                    <div className="flag">
+                                        <img src="/css/flags/blank.gif" className={"flag " + match.team_1.flag}
+                                             alt={match.team_1.name}/>
+                                    </div>
+                                    <div/>
+                                    <span>{match.team_1.name}</span>
+                                </div>
+                                <span className="glyphicon glyphicon glyphicon-remove" aria-hidden="true"/>
+                                <div className="command">
+                                    <div className="flag">
+                                        <img src="/css/flags/blank.gif" className={"flag " + match.team_2.flag}
+                                             alt={match.team_2.name}/>
+                                    </div>
+                                    <div/>
+                                    <span>{match.team_2.name}</span>
+                                </div>
                             </div>
                         </div>
                         {main.showWasBet(match)}
@@ -81,7 +87,7 @@ function mapStateToProps(state) {
     }
 }
 
-function matchDispatchToProps(dispatch){
+function matchDispatchToProps(dispatch) {
     return {
         selectMatches: (match) => dispatch(GetDataMatch(match))
     }

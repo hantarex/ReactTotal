@@ -2,6 +2,7 @@ import {setData} from "../Actions/setData";
 import {MainLoadingActions} from "../Actions/MainLoadingAction";
 import axios from 'axios';
 import qs from 'querystring';
+import {SetErrorBlock} from "../Actions/SetErrorBlock";
 
 export default function() {
     // let data = {
@@ -118,6 +119,10 @@ export default function() {
         axios.defaults.withCredentials = true;
         axios.post("http://workgit_56/personal/index.php?op=totalizator&use=match_list").then(res => {
             dispatch(setData(res.data));
+            dispatch(MainLoadingActions(false));
+        }).catch(error => {
+            dispatch(SetErrorBlock("Ошибка входа в личный кабинет!","ERROR_BLOCK_TEXT"));
+            dispatch(SetErrorBlock(1,"ERROR_BLOCK_ACTIVE"));
             dispatch(MainLoadingActions(false));
         })
     };

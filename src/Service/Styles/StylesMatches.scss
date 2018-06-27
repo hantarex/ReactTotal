@@ -13,6 +13,16 @@
 
 $heightBody: 500px;
 
+#sd_totalizator > div{
+  min-height: 541px;
+}
+
+.error{
+  font-weight:bold;
+  font-size: 20px;
+  text-align: center;
+}
+
 .matches{
   width:40%;
   max-height: $heightBody;
@@ -53,7 +63,9 @@ $heightBody: 500px;
   }
   .command_block{
     white-space: normal;
-    margin-right: 75px;
+    width:100%;
+    text-align: center;
+    padding-right: 75px;
   }
   .commands, .flags, .data, .command_block {
     vertical-align: middle;
@@ -82,9 +94,20 @@ $heightBody: 500px;
     }
   }
   .commands{
-    margin: 0 10px;
+    //margin: 0 10px;
     text-transform: uppercase;
     font-weight: bold;
+    width: 100%;
+    &>*{
+      display: inline-block;
+      vertical-align: middle;
+      text-align: center;
+      width: 40%;
+    }
+    &>span{
+      //margin: 0 10px;
+      width:20%;
+    }
     .team{
       line-height: 14px;
       display: inline-block;
@@ -122,6 +145,9 @@ $heightBody: 500px;
       display: inline-block;
       vertical-align: top;
       font-weight: bold;
+      &.game_type{
+        text-align: center;
+      }
       &.data, &.game_type{
         width: 10%;
       }
@@ -159,8 +185,12 @@ $heightBody: 500px;
     }
   }
 }
+.beat_bet{
+  display: block;
+  margin-bottom: 40px;
+}
 .active_bet, .beat_bet{
-  margin-top: 15px;
+  margin-top: 50px;
   width: 100%;
   > div {
     vertical-align: top;
@@ -170,7 +200,7 @@ $heightBody: 500px;
     }
   }
   .show_check_submit{
-    width:40%;
+    width:45%;
     > span{
       text-transform: uppercase;
     }
@@ -181,7 +211,7 @@ $heightBody: 500px;
     }
   }
   .condition{
-    width: 30%;
+    width: 45%;
     > span{
       text-transform: uppercase;
     }
@@ -354,6 +384,48 @@ $heightBody: 500px;
     .type_3{
       .bet{
         float:right;
+      }
+    }
+  }
+}
+@media (max-width: 767px) {
+  .header{
+    & > ul > li{
+      display: block;
+      margin-top: 5px;
+      & + li{
+        margin-left: 0;
+      }
+    }
+  }
+  .matches{
+    width: auto;
+    display: block;
+  }
+  .work_panel{
+    width: auto;
+    display: block;
+    .header{
+      & > .commands{
+        display: block;
+        width: auto !important;
+      }
+      & > .flags{
+        display: block;
+        width: auto !important;
+      }
+    }
+    .header{
+      .active_bet, .beat_bet{
+        display: flex;
+        flex-direction: column;
+        .show_check_submit{
+          width: auto;
+          order: -2;
+        }
+        .condition{
+          width: auto;
+        }
       }
     }
   }

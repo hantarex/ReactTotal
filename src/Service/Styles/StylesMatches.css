@@ -1,3 +1,11 @@
+#sd_totalizator > div {
+  min-height: 541px; }
+
+.error {
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center; }
+
 .matches {
   width: 40%;
   max-height: 500px;
@@ -31,7 +39,9 @@
       border-radius: 0 0 3px 3px; }
   .matches .command_block {
     white-space: normal;
-    margin-right: 75px; }
+    width: 100%;
+    text-align: center;
+    padding-right: 75px; }
   .matches .commands, .matches .flags, .matches .data, .matches .command_block {
     vertical-align: middle;
     display: inline-block; }
@@ -52,9 +62,16 @@
   .matches .flags span {
     vertical-align: middle; }
   .matches .commands {
-    margin: 0 10px;
     text-transform: uppercase;
-    font-weight: bold; }
+    font-weight: bold;
+    width: 100%; }
+    .matches .commands > * {
+      display: inline-block;
+      vertical-align: middle;
+      text-align: center;
+      width: 40%; }
+    .matches .commands > span {
+      width: 20%; }
     .matches .commands .team {
       line-height: 14px;
       display: inline-block;
@@ -86,6 +103,8 @@
     display: inline-block;
     vertical-align: top;
     font-weight: bold; }
+    .work_panel .header > div.game_type, .info .header > div.game_type {
+      text-align: center; }
     .work_panel .header > div.data, .work_panel .header > div.game_type, .info .header > div.data, .info .header > div.game_type {
       width: 10%; }
     .work_panel .header > div.commands, .work_panel .header > div.flags, .info .header > div.commands, .info .header > div.flags {
@@ -112,8 +131,12 @@
       .work_panel .header > div.flags span, .info .header > div.flags span {
         vertical-align: middle; }
 
+.beat_bet {
+  display: block;
+  margin-bottom: 40px; }
+
 .active_bet, .beat_bet {
-  margin-top: 15px;
+  margin-top: 50px;
   width: 100%; }
   .active_bet > div, .beat_bet > div {
     vertical-align: top;
@@ -121,7 +144,7 @@
     .active_bet > div + div, .beat_bet > div + div {
       margin-left: 10px; }
   .active_bet .show_check_submit, .beat_bet .show_check_submit {
-    width: 40%; }
+    width: 45%; }
     .active_bet .show_check_submit > span, .beat_bet .show_check_submit > span {
       text-transform: uppercase; }
     .active_bet .show_check_submit .check, .beat_bet .show_check_submit .check {
@@ -129,7 +152,7 @@
       padding: 7px 15px;
       width: 100%; }
   .active_bet .condition, .beat_bet .condition {
-    width: 30%; }
+    width: 45%; }
     .active_bet .condition > span, .beat_bet .condition > span {
       text-transform: uppercase; }
     .active_bet .condition .type_1, .active_bet .condition .type_2, .active_bet .condition .type_3, .beat_bet .condition .type_1, .beat_bet .condition .type_2, .beat_bet .condition .type_3 {
@@ -259,5 +282,34 @@
   margin-top: 5px; }
 .active_bet .condition .type_3 .bet {
   float: right; }
+
+@media (max-width: 767px) {
+  .header > ul > li {
+    display: block;
+    margin-top: 5px; }
+    .header > ul > li + li {
+      margin-left: 0; }
+
+  .matches {
+    width: auto;
+    display: block; }
+
+  .work_panel {
+    width: auto;
+    display: block; }
+    .work_panel .header > .commands {
+      display: block;
+      width: auto !important; }
+    .work_panel .header > .flags {
+      display: block;
+      width: auto !important; }
+    .work_panel .header .active_bet, .work_panel .header .beat_bet {
+      display: flex;
+      flex-direction: column; }
+      .work_panel .header .active_bet .show_check_submit, .work_panel .header .beat_bet .show_check_submit {
+        width: auto;
+        order: -2; }
+      .work_panel .header .active_bet .condition, .work_panel .header .beat_bet .condition {
+        width: auto; } }
 
 /*# sourceMappingURL=StylesMatches.css.map */

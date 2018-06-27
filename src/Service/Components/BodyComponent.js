@@ -9,16 +9,27 @@ import {css} from 'aphrodite';
 import StyleLoading from "../Styles/StyleLoading";
 import GetData from "../FetchData/GetData";
 
-const Body = ({mainLoading, onGetData}) => {
+const Body = ({mainLoading, onGetData, errorBlock}) => {
     if(mainLoading) {
         onGetData();
     }
     const showMain = () => {
         if(mainLoading) {
             return(
-                <ReactLoading className={css(StyleLoading.loading)} type="spin" color="#099fd1" height={150} width={150} />
+                <div style={{fontSize: '14px'}}>
+                        <ReactLoading className={css(StyleLoading.loading)} type="spin" color="#099fd1" height={150} width={150} />
+                </div>
             )
-        } else {
+        } else if(errorBlock.active === 1){
+            return (
+                <div style={{fontSize: '14px'}}>
+                    <div className="error">
+                        {errorBlock.text}
+                    </div>
+                </div>
+            )
+        }
+        else {
             return (
                 <div style={{fontSize: '14px'}}>
                     <Header/>
@@ -34,7 +45,8 @@ const Body = ({mainLoading, onGetData}) => {
 
 export default connect(
     state => ({
-        mainLoading: state.mainLoading
+        mainLoading: state.mainLoading,
+        errorBlock: state.errorBlock,
     }),
     dispatch => ({
             onGetData: () => {
