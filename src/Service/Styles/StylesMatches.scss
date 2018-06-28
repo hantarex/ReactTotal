@@ -141,6 +141,11 @@ $heightBody: 500px;
     border-radius: 3px;
   }
   .header{
+    .empty{
+      text-align: center;
+      width: 100%;
+      padding: 30px;
+    }
     > div {
       display: inline-block;
       vertical-align: top;

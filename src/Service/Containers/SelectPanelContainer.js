@@ -9,7 +9,7 @@ import {SetCheck} from "../Actions/SetCheck";
 import {setSubmitBet} from "../Actions/setSubmitBet";
 import SendBet from "../FetchData/SendBet";
 
-const SelectPanelContainer = ({matchInfo, matchLoading, changeCondition, selectedCondition, setBet, bet, setCheck, use_check, infoPanel, submitBetAction, onSubmitBet}) => {
+const SelectPanelContainer = ({matchInfo, matchLoading, changeCondition, selectedCondition, setBet, bet, setCheck, use_check, infoPanel, submitBetAction, onSubmitBet, footballMatches}) => {
 
     const setBetValue = (selectedCondition, data, event) =>{
         let obj = {};
@@ -329,7 +329,11 @@ const SelectPanelContainer = ({matchInfo, matchLoading, changeCondition, selecte
                 </div>
             )
         } else {
-            return '';
+            return (
+                <div className="empty">
+                Активных чеков с датой покупки старше {footballMatches.date_start_check} не найдено. Для участия сделайте покупку в одном из наших магазинов.
+                </div>
+            );
         }
     };
 
@@ -404,6 +408,7 @@ export default connect(
         matchLoading: state.matchLoading,
         selectedCondition: state.selectedCondition,
         bet: state.bet,
+        footballMatches: state.data,
         use_check: state.setCheck,
         infoPanel: state.data.info,
         onSubmitBet: state.onSubmitBet,
