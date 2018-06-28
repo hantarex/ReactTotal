@@ -92,6 +92,8 @@
   display: inline-block;
   max-height: 500px;
   overflow-y: auto; }
+  .work_panel .info_mini, .info .info_mini {
+    text-align: center; }
   .work_panel > div, .info > div {
     padding: 15px;
     min-height: 500px;

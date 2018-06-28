@@ -132,6 +132,9 @@ $heightBody: 500px;
   display: inline-block;
   max-height: $heightBody;
   overflow-y: auto;
+  .info_mini{
+    text-align: center;
+  }
   > div{
     padding: 15px;
     min-height: $heightBody;
