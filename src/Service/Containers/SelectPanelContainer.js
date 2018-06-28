@@ -224,7 +224,7 @@ const SelectPanelContainer = ({matchInfo, matchLoading, changeCondition, selecte
                     {bet.check}
                 </div>
                 <div className="info">
-                    В случае победы {bet.rewards}
+                    Если угадаете начислим {bet.rewards}
                 </div>
             </div>
         )
