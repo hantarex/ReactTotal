@@ -83,7 +83,7 @@ export default function() {
     // };
     return (dispatch) => {
         axios.defaults.withCredentials = true;
-        axios.post("http://workgit_56/personal/index.php?op=totalizator&use=get_history").then(res => {
+        axios.post("/personal/index.php?op=totalizator&use=get_history").then(res => {
             dispatch(setHistory(res.data));
             dispatch(HistoryLoadingActions(false))
         })

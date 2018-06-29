@@ -9,7 +9,7 @@ export default function (data) {
     return (dispatch) => {
         dispatch(setSubmitBet(true));
         axios.defaults.withCredentials = true;
-        axios.post("http://workgit_56/personal/index.php?op=totalizator&use=set_bet", data,
+        axios.post("/personal/index.php?op=totalizator&use=set_bet", data,
             {
                 headers: {
                     'Content-Type': 'multipart/form-data'
