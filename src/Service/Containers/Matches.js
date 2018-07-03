@@ -64,7 +64,7 @@ class Matches extends Component {
                                 </div>
                                 <span className="glyphicon glyphicon glyphicon-remove" aria-hidden="true"/>
                                 <div className="command">
-                                    <div className="flag">
+                                    <div>
                                         <img src="/css/flags/blank.gif" className={"flag " + match.team_2.flag}
                                              alt={match.team_2.name}/>
                                     </div>
